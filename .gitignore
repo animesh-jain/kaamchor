@@ -1,0 +1,16 @@
+.sts4-cache/
+.classpath
+.factorypath
+.project
+.settings/
+target/
+*.DS_Store
+data/target/
+data/.classpath
+data/.settings/
+data/.project
+bin/
+.idea
+.idea/
+.kaamchor.iml
+kaamchor.iml
