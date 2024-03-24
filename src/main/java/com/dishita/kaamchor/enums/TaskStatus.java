@@ -1,0 +1,16 @@
+package com.dishita.kaamchor.enums;
+
+public enum TaskStatus {
+    PENDING,
+    IN_PROGRESS,
+    FORM_PENDING,
+    FORM_SUBMITTED,
+    IN_REVIEW,
+    REVIEW_ACCEPTED,
+    REVIEW_REJECTED,
+    IN_CLIENT_REVIEW,
+    CLIENT_REVIEW_ACCEPTED,
+    CLIENT_REVIEW_REJECTED,
+    COMPLETED,
+    UPCOMING
+}
