@@ -1,7 +1,9 @@
 package com.dishita.kaamchor.service;
 
 import com.dishita.kaamchor.model.Task;
+import com.dishita.kaamchor.model.UserTaskMapping;
 import com.dishita.kaamchor.repository.TaskRepository;
+import com.dishita.kaamchor.repository.UserTaskMappingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,10 @@ public class TaskService {
 
     @Autowired
     private TaskRepository taskRepository;
+
+    @Autowired
+    private UserTaskMappingRepository userTaskMappingRepository;
+
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }

@@ -21,7 +21,9 @@ public class User {
     private String createdAt;
     private String updatedAt;
     private String role;
-    private String status;
+    private Boolean isActive = true;
+    private String username;
+    private String password;
 
 
 }

@@ -18,6 +18,7 @@ public class Task {
     private String title;
     private String description;
     private String formLink;
+    private Integer priority;
     private String createdAt;
     private String updatedAt;
 }

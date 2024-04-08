@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tasks")
+@RequestMapping("/task")
 public class TaskController {
 
     @Autowired
@@ -25,7 +25,7 @@ public class TaskController {
         return taskService.getTask(id);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public Task createTask(@RequestBody Task task) {
         return taskService.createTask(task);
     }
