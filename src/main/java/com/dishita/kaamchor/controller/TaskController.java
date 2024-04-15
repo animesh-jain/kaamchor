@@ -1,5 +1,6 @@
 package com.dishita.kaamchor.controller;
 
+import com.dishita.kaamchor.enums.TaskStatus;
 import com.dishita.kaamchor.model.Task;
 import com.dishita.kaamchor.service.TaskService;
 import org.apache.coyote.BadRequestException;
@@ -15,9 +16,14 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    @GetMapping
+    @GetMapping("/get-all-tasks")
     public List<Task> getAllTasks() {
         return taskService.getAllTasks();
+    }
+
+    @GetMapping("/get-pending-tasks")
+    public List<Task> getPendingTasks() {
+        return taskService.getPendingTasks();
     }
 
     @GetMapping("/{id}")
@@ -30,13 +36,18 @@ public class TaskController {
         return taskService.createTask(task);
     }
 
-    @PutMapping("/{id}")
-    public Task updateTask(@PathVariable Integer id, @RequestBody Task task) throws BadRequestException {
-        return taskService.updateTask(id, task);
+    @PutMapping("/update-status/{id}")
+    public Task updateStatus(@PathVariable Integer id, @RequestParam TaskStatus status) throws BadRequestException {
+        return taskService.updateStatus(id, status);
     }
 
     @GetMapping("/user/{userId}")
     public List<Task> getTasksByUserId(@PathVariable Integer userId) {
         return taskService.getTasksByUserId(userId);
+    }
+
+    @PutMapping("/assign-task/{taskId}/{userId}")
+    public Task assignTask(@PathVariable Integer taskId, @PathVariable Integer userId) throws BadRequestException {
+        return taskService.assignTask(taskId, userId);
     }
 }

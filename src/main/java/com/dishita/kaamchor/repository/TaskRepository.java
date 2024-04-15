@@ -1,5 +1,6 @@
 package com.dishita.kaamchor.repository;
 
+import com.dishita.kaamchor.enums.TaskStatus;
 import com.dishita.kaamchor.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,10 +11,9 @@ import java.util.List;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Integer> {
 
-    @Query("SELECT t FROM Task t JOIN UserTaskMapping utm " +
-            "ON t.id = utm.task.id " +
-            "WHERE utm.user.id = ?1 " +
-            "ORDER BY t.priority, CASE utm.status " +
+    @Query("SELECT t FROM Task t " +
+            "WHERE t.userId = ?1 " +
+            "ORDER BY t.priority, CASE t.status " +
             "         WHEN 'CLIENT_REVIEW_ACCEPTED' THEN 1 " +
             "         WHEN 'CLIENT_REVIEW_REJECTED' THEN 2 " +
             "         WHEN 'IN_CLIENT_REVIEW' THEN 3 " +
@@ -28,4 +28,6 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
             "         WHEN 'UPCOMING' THEN 12 " +
             "         END")
     List<Task> getTasksByUserIdOrderByPriorityAndStatus(Integer userId);
+
+    List<Task> getAllByStatusAndIsActive(TaskStatus taskStatus, boolean isActive);
 }

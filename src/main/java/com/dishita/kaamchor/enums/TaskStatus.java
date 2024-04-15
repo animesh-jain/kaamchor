@@ -2,6 +2,7 @@ package com.dishita.kaamchor.enums;
 
 public enum TaskStatus {
     PENDING,
+    ASSIGNED,
     IN_PROGRESS,
     FORM_PENDING,
     FORM_SUBMITTED,
